@@ -13,9 +13,13 @@ var active_panel: Panel = null
 @onready var target_panel: Panel = $"../TargetPanel"
 
 func _ready():
-	init_position = global_position
+	reset()
 
+# Drag and drop
 func _gui_input(event):
+	if done:
+		return
+		
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			dragging = event.pressed
@@ -31,7 +35,6 @@ func _gui_input(event):
 func _process(_delta):
 	if dragging:
 		_check_targets()
-
 
 # 🔍 Detect hover target
 func _check_targets():
@@ -56,5 +59,5 @@ func _snap_to_target():
 func reset():
 	done = false
 	active_panel = null
-	global_position = init_position
+	init_position = global_position
 	

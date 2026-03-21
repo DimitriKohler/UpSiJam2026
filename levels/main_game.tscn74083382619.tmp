@@ -1,0 +1,176 @@
+[gd_scene format=3 uid="uid://bdt3h6ah6ys8a"]
+
+[ext_resource type="Script" uid="uid://cigu55uk4ujnb" path="res://levels/main_game.gd" id="1_61a2o"]
+[ext_resource type="Texture2D" uid="uid://c2scgvbt0sa1q" path="res://visual/image/background_placeholder.png" id="1_85s4h"]
+[ext_resource type="Texture2D" uid="uid://iyrt6wcpx622" path="res://visual/image/desk_placeholder.png" id="2_48shk"]
+[ext_resource type="Script" uid="uid://cmlckhj27y0aq" path="res://script/text_manager.gd" id="3_48shk"]
+[ext_resource type="Script" uid="uid://bjw8yosl7aols" path="res://script/rich_text_label.gd" id="3_61ut7"]
+[ext_resource type="Texture2D" uid="uid://bkpkxo6e5ml3a" path="res://visual/image/cardboard_placeholder.png" id="4_be87d"]
+[ext_resource type="Script" uid="uid://46btr8ec1ijj" path="res://script/cardboard_panel.gd" id="4_o5002"]
+[ext_resource type="Script" uid="uid://degcl3i8joxp0" path="res://script/item_panel.gd" id="4_u4di8"]
+[ext_resource type="Script" uid="uid://b1pbjx4elyf0f" path="res://script/item_data.gd" id="5_u4di8"]
+[ext_resource type="Texture2D" uid="uid://6w3el5bv24pq" path="res://visual/sprite/package.png" id="8_32443"]
+[ext_resource type="Script" uid="uid://bm6ocslsj7vtm" path="res://script/money_label.gd" id="9_4qlv2"]
+[ext_resource type="Script" uid="uid://c4bt0ori0dci0" path="res://script/wrapping_minigame.gd" id="10_cl5jp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_32443"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4qlv2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_be87d"]
+bg_color = Color(0.38039216, 0.38039216, 0.38039216, 0.58431375)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.14, 0.14, 0.14, 0.6901961)
+border_blend = true
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cl5jp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_85s4h"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0.81, 0.513, 0.405, 0.6745098)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.75, 0.43500003, 0.45075005, 1)
+border_blend = true
+corner_radius_top_left = 9
+corner_radius_top_right = 8
+
+[node name="MainGame" type="Node2D" unique_id=135492972]
+script = ExtResource("1_61a2o")
+
+[node name="MainView" type="Node2D" parent="." unique_id=1630862850]
+
+[node name="Background" type="TextureRect" parent="MainView" unique_id=1261129348]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_85s4h")
+
+[node name="Workbench" type="TextureRect" parent="MainView/Background" unique_id=2086111532]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -200.0
+offset_right = 400.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_48shk")
+
+[node name="ItemPanel" type="Panel" parent="MainView/Background/Workbench" unique_id=2024458761]
+layout_mode = 0
+offset_left = 95.04132
+offset_top = 138.01651
+offset_right = 269.75208
+offset_bottom = 322.6447
+theme_override_styles/panel = SubResource("StyleBoxEmpty_32443")
+script = ExtResource("4_u4di8")
+
+[node name="Item" type="TextureRect" parent="MainView/Background/Workbench/ItemPanel" unique_id=684429926]
+z_index = 1
+layout_mode = 0
+offset_right = 179.15015
+offset_bottom = 182.78003
+expand_mode = 1
+
+[node name="ItemData" type="Node2D" parent="MainView/Background/Workbench/ItemPanel" unique_id=201528320]
+script = ExtResource("5_u4di8")
+
+[node name="CardboardPanel" type="Panel" parent="MainView/Background/Workbench" unique_id=780149738]
+layout_mode = 0
+offset_left = 545.45447
+offset_top = 138.84302
+offset_right = 729.2561
+offset_bottom = 325.12396
+theme_override_styles/panel = SubResource("StyleBoxEmpty_4qlv2")
+script = ExtResource("4_o5002")
+
+[node name="Cardboard" type="TextureRect" parent="MainView/Background/Workbench/CardboardPanel" unique_id=178568159]
+layout_mode = 0
+offset_left = -0.826416
+offset_top = 1.652832
+offset_right = 178.32373
+offset_bottom = 184.43286
+texture = ExtResource("4_be87d")
+expand_mode = 1
+
+[node name="TargetPanel" type="Panel" parent="MainView/Background/Workbench" unique_id=72986764]
+layout_mode = 0
+offset_left = 342.97522
+offset_top = 248.76031
+offset_right = 491.2395
+offset_bottom = 324.29755
+theme_override_styles/panel = SubResource("StyleBoxFlat_be87d")
+
+[node name="Package" type="TextureRect" parent="MainView/Background/Workbench/TargetPanel" unique_id=1649275444]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -4.5078735
+offset_top = -11.269714
+offset_right = 148.49213
+offset_bottom = 84.730286
+texture = ExtResource("8_32443")
+expand_mode = 1
+
+[node name="GuiPanel" type="Panel" parent="MainView" unique_id=1963876684]
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_cl5jp")
+
+[node name="MoneyLabel" type="Label" parent="MainView/GuiPanel" unique_id=1513397655]
+layout_mode = 1
+offset_left = 1680.0884
+offset_top = 25.00978
+offset_right = 1896.1301
+offset_bottom = 106.63649
+theme_override_font_sizes/font_size = 54
+text = "0.00$"
+script = ExtResource("9_4qlv2")
+
+[node name="WrappingMinigame" type="Node2D" parent="MainView" unique_id=132006585]
+script = ExtResource("10_cl5jp")
+
+[node name="DialogView" type="Node2D" parent="." unique_id=970284022]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="DialogView" unique_id=1344932945]
+z_index = 2
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 0.5019608)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogView" unique_id=39739027]
+visible = false
+z_index = 3
+offset_left = 60.0
+offset_top = 740.0
+offset_right = 1860.0
+offset_bottom = 1040.0
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 16
+theme_override_font_sizes/bold_italics_font_size = 16
+theme_override_font_sizes/italics_font_size = 16
+theme_override_font_sizes/mono_font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_85s4h")
+bbcode_enabled = true
+text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+scroll_active = false
+autowrap_mode = 2
+script = ExtResource("3_61ut7")
+
+[node name="TextManager" type="Node2D" parent="DialogView" unique_id=1929310804]
+script = ExtResource("3_48shk")
+
+[node name="GameStateEnum" type="Node2D" parent="." unique_id=1240293942]

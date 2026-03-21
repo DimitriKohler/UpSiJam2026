@@ -1,31 +1,43 @@
 [gd_scene format=3 uid="uid://bdt3h6ah6ys8a"]
 
 [ext_resource type="Script" uid="uid://cigu55uk4ujnb" path="res://levels/main_game.gd" id="1_61a2o"]
-[ext_resource type="Texture2D" uid="uid://c2scgvbt0sa1q" path="res://visual/image/background_placeholder.png" id="1_85s4h"]
-[ext_resource type="Texture2D" uid="uid://iyrt6wcpx622" path="res://visual/image/desk_placeholder.png" id="2_48shk"]
-[ext_resource type="Script" uid="uid://cmlckhj27y0aq" path="res://script/text_manager.gd" id="3_48shk"]
-[ext_resource type="Script" uid="uid://bjw8yosl7aols" path="res://script/rich_text_label.gd" id="3_61ut7"]
-[ext_resource type="Texture2D" uid="uid://bkpkxo6e5ml3a" path="res://visual/image/cardboard_placeholder.png" id="4_be87d"]
+[ext_resource type="Texture2D" uid="uid://cuhvk88ppvmhh" path="res://visual/image/background.png" id="2_bprcb"]
+[ext_resource type="Script" uid="uid://dwg0lcg78aufl" path="res://script/text_manager.gd" id="3_48shk"]
+[ext_resource type="Texture2D" uid="uid://bvqu36bmuxjv1" path="res://visual/image/desk.png" id="3_mfxpw"]
 [ext_resource type="Script" uid="uid://46btr8ec1ijj" path="res://script/cardboard_panel.gd" id="4_o5002"]
 [ext_resource type="Script" uid="uid://degcl3i8joxp0" path="res://script/item_panel.gd" id="4_u4di8"]
+[ext_resource type="Texture2D" uid="uid://cs8r0drorcn6k" path="res://visual/sprite/gooddragon.png" id="5_mfxpw"]
 [ext_resource type="Script" uid="uid://b1pbjx4elyf0f" path="res://script/item_data.gd" id="5_u4di8"]
-[ext_resource type="Texture2D" uid="uid://6w3el5bv24pq" path="res://visual/sprite/package.png" id="8_32443"]
+[ext_resource type="Script" uid="uid://c1ifjojmohpuk" path="res://script/package_panel.gd" id="8_5lvy4"]
+[ext_resource type="Texture2D" uid="uid://c15aitv0sxvwd" path="res://visual/sprite/package0.png" id="8_cl5jp"]
+[ext_resource type="Texture2D" uid="uid://cc03oaa78tilh" path="res://visual/image/carboard.png" id="8_op16g"]
 [ext_resource type="Script" uid="uid://bm6ocslsj7vtm" path="res://script/money_label.gd" id="9_4qlv2"]
+[ext_resource type="Script" uid="uid://c4bt0ori0dci0" path="res://script/wrapping_minigame.gd" id="10_cl5jp"]
+[ext_resource type="Texture2D" uid="uid://bxtns37kwq4t8" path="res://visual/sprite/Jezos.png" id="14_op16g"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_32443"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4qlv2"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_be87d"]
-bg_color = Color(0.38039216, 0.38039216, 0.38039216, 0.58431375)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.14, 0.14, 0.14, 0.6901961)
-border_blend = true
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mfxpw"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cl5jp"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_be87d"]
+bg_color = Color(1, 1, 1, 0.1764706)
+border_width_left = 12
+border_width_top = 12
+border_width_right = 12
+border_width_bottom = 12
+border_color = Color(0.7, 0.7, 0.7, 0.3529412)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(1, 0.7125, 0.25, 0.1764706)
+shadow_size = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bprcb"]
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_85s4h"]
 content_margin_left = 12.0
@@ -33,14 +45,16 @@ content_margin_top = 12.0
 content_margin_right = 12.0
 content_margin_bottom = 12.0
 bg_color = Color(0.81, 0.513, 0.405, 0.6745098)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.75, 0.43500003, 0.45075005, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(1, 0.77, 0.7776667, 1)
 border_blend = true
-corner_radius_top_left = 9
-corner_radius_top_right = 8
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
 
 [node name="MainGame" type="Node2D" unique_id=135492972]
 script = ExtResource("1_61a2o")
@@ -50,7 +64,8 @@ script = ExtResource("1_61a2o")
 [node name="Background" type="TextureRect" parent="MainView" unique_id=1261129348]
 offset_right = 1920.0
 offset_bottom = 1080.0
-texture = ExtResource("1_85s4h")
+texture = ExtResource("2_bprcb")
+expand_mode = 2
 
 [node name="Workbench" type="TextureRect" parent="MainView/Background" unique_id=2086111532]
 layout_mode = 1
@@ -59,77 +74,211 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -400.0
-offset_top = -200.0
-offset_right = 400.0
-offset_bottom = 200.0
+offset_left = -960.0
+offset_top = -620.0
+offset_right = 960.0
+offset_bottom = 460.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_48shk")
+texture = ExtResource("3_mfxpw")
+expand_mode = 2
 
 [node name="ItemPanel" type="Panel" parent="MainView/Background/Workbench" unique_id=2024458761]
 layout_mode = 0
-offset_left = 95.04132
-offset_top = 138.01651
-offset_right = 269.75208
-offset_bottom = 322.6447
+offset_left = 190.0
+offset_top = 350.0
+offset_right = 702.0
+offset_bottom = 638.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_32443")
 script = ExtResource("4_u4di8")
 
-[node name="Item" type="TextureRect" parent="MainView/Background/Workbench/ItemPanel" unique_id=684429926]
+[node name="MarginContainer" type="MarginContainer" parent="MainView/Background/Workbench/ItemPanel" unique_id=760965326]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 9
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 9
+
+[node name="Item" type="TextureRect" parent="MainView/Background/Workbench/ItemPanel/MarginContainer" unique_id=684429926]
 z_index = 1
-layout_mode = 0
-offset_right = 179.15015
-offset_bottom = 182.78003
-expand_mode = 1
+layout_mode = 2
+texture = ExtResource("5_mfxpw")
+expand_mode = 3
 
 [node name="ItemData" type="Node2D" parent="MainView/Background/Workbench/ItemPanel" unique_id=201528320]
 script = ExtResource("5_u4di8")
 
 [node name="CardboardPanel" type="Panel" parent="MainView/Background/Workbench" unique_id=780149738]
 layout_mode = 0
-offset_left = 545.45447
-offset_top = 138.84302
-offset_right = 729.2561
-offset_bottom = 325.12396
+offset_left = 1210.0
+offset_top = 350.0
+offset_right = 1722.0
+offset_bottom = 638.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_4qlv2")
 script = ExtResource("4_o5002")
 
-[node name="Cardboard" type="TextureRect" parent="MainView/Background/Workbench/CardboardPanel" unique_id=178568159]
-layout_mode = 0
-offset_left = -0.826416
-offset_top = 1.652832
-offset_right = 178.32373
-offset_bottom = 184.43286
-texture = ExtResource("4_be87d")
+[node name="MarginContainer" type="MarginContainer" parent="MainView/Background/Workbench/CardboardPanel" unique_id=552543672]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = -80
+theme_override_constants/margin_top = -45
+theme_override_constants/margin_right = -80
+theme_override_constants/margin_bottom = -45
+
+[node name="Cardboard" type="TextureRect" parent="MainView/Background/Workbench/CardboardPanel/MarginContainer" unique_id=178568159]
+layout_mode = 2
+texture = ExtResource("8_op16g")
 expand_mode = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="MainView/Background/Workbench/CardboardPanel" unique_id=795348986]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -7.0
+offset_right = 3.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = -80
+theme_override_constants/margin_top = -45
+theme_override_constants/margin_right = -80
+theme_override_constants/margin_bottom = -45
+
+[node name="Cardboard" type="TextureRect" parent="MainView/Background/Workbench/CardboardPanel/MarginContainer2" unique_id=594212536]
+layout_mode = 2
+texture = ExtResource("8_op16g")
+expand_mode = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="MainView/Background/Workbench/CardboardPanel" unique_id=434541491]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = -15.0
+offset_right = 5.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = -80
+theme_override_constants/margin_top = -45
+theme_override_constants/margin_right = -80
+theme_override_constants/margin_bottom = -45
+
+[node name="Cardboard" type="TextureRect" parent="MainView/Background/Workbench/CardboardPanel/MarginContainer3" unique_id=1553011927]
+layout_mode = 2
+texture = ExtResource("8_op16g")
+expand_mode = 1
+
+[node name="MarginContainer4" type="MarginContainer" parent="MainView/Background/Workbench/CardboardPanel" unique_id=1674452811]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = -20.0
+offset_right = 12.9991455
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = -80
+theme_override_constants/margin_top = -45
+theme_override_constants/margin_right = -80
+theme_override_constants/margin_bottom = -45
+
+[node name="Cardboard" type="TextureRect" parent="MainView/Background/Workbench/CardboardPanel/MarginContainer4" unique_id=1487420657]
+layout_mode = 2
+texture = ExtResource("8_op16g")
+expand_mode = 1
+
+[node name="PackagePanel" type="Panel" parent="MainView/Background/Workbench" unique_id=1414832385]
+layout_mode = 0
+offset_left = 700.0
+offset_top = 580.0
+offset_right = 1212.0
+offset_bottom = 868.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_mfxpw")
+script = ExtResource("8_5lvy4")
+
+[node name="MarginContainer" type="MarginContainer" parent="MainView/Background/Workbench/PackagePanel" unique_id=1996532548]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = -80
+theme_override_constants/margin_top = -45
+theme_override_constants/margin_right = -80
+theme_override_constants/margin_bottom = -45
+
+[node name="Package" type="TextureRect" parent="MainView/Background/Workbench/PackagePanel/MarginContainer" unique_id=1649275444]
+visible = false
+layout_mode = 2
+texture = ExtResource("8_cl5jp")
+expand_mode = 1
+
+[node name="DebugLabel" type="Label" parent="MainView/Background/Workbench/PackagePanel" unique_id=1058696364]
+layout_mode = 0
+offset_left = 9.431763
+offset_top = -80.65338
+offset_right = 75.36914
+offset_bottom = -38.789795
 
 [node name="TargetPanel" type="Panel" parent="MainView/Background/Workbench" unique_id=72986764]
 layout_mode = 0
-offset_left = 342.97522
-offset_top = 248.76031
-offset_right = 491.2395
-offset_bottom = 324.29755
+offset_left = 700.0
+offset_top = 580.0
+offset_right = 1212.0
+offset_bottom = 868.0
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_be87d")
 
-[node name="Package" type="TextureRect" parent="MainView/Background/Workbench/TargetPanel" unique_id=1649275444]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_left = -4.5078735
-offset_top = -11.269714
-offset_right = 148.49213
-offset_bottom = 84.730286
-texture = ExtResource("8_32443")
-expand_mode = 1
+[node name="WrappingMinigame" type="Node2D" parent="MainView" unique_id=132006585]
+script = ExtResource("10_cl5jp")
 
-[node name="GuiPanel" type="Panel" parent="MainView" unique_id=1963876684]
+[node name="DisclaimerPanel" type="Panel" parent="MainView" unique_id=1963876684]
+visible = false
 offset_right = 1920.0
 offset_bottom = 1080.0
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_cl5jp")
+theme_override_styles/panel = SubResource("StyleBoxFlat_bprcb")
 
-[node name="MoneyLabel" type="Label" parent="MainView/GuiPanel" unique_id=1513397655]
+[node name="DisclaimerLabel" type="RichTextLabel" parent="MainView/DisclaimerPanel" unique_id=1021781784]
+visible = false
 layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -200.0
+offset_right = 563.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+theme_override_font_sizes/bold_italics_font_size = 48
+theme_override_font_sizes/italics_font_size = 48
+theme_override_font_sizes/mono_font_size = 48
+text = "Avertissement légal
+Ce jeu est purement une oeuvre de fiction. Toute ressemblence avec des éléments ou personnes réels est purement fortuite."
+
+[node name="MoneyLabel" type="Label" parent="MainView" unique_id=1513397655]
+visible = false
 offset_left = 1680.0884
 offset_top = 25.00978
 offset_right = 1896.1301
@@ -139,32 +288,80 @@ text = "0.00$"
 script = ExtResource("9_4qlv2")
 
 [node name="DialogView" type="Node2D" parent="." unique_id=970284022]
-visible = false
 
-[node name="ColorRect" type="ColorRect" parent="DialogView" unique_id=1344932945]
+[node name="DialogBackground" type="ColorRect" parent="DialogView" unique_id=1344932945]
+visible = false
 z_index = 2
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0, 0, 0, 0.5019608)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="DialogView" unique_id=39739027]
+[node name="Boss" type="TextureRect" parent="DialogView/DialogBackground" unique_id=1570021985]
 visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1080.0
+offset_top = -864.0
+offset_right = 456.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("14_op16g")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="DialogView/DialogBackground" unique_id=1176353235]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -300.0
+offset_right = 960.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="DialogTextLabel" type="RichTextLabel" parent="DialogView/DialogBackground/MarginContainer" unique_id=39739027]
 z_index = 3
-offset_left = 60.0
-offset_top = 740.0
-offset_right = 1860.0
-offset_bottom = 1040.0
+layout_mode = 2
+theme_override_constants/outline_size = 8
 theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 16
-theme_override_font_sizes/bold_italics_font_size = 16
-theme_override_font_sizes/italics_font_size = 16
-theme_override_font_sizes/mono_font_size = 16
+theme_override_font_sizes/bold_font_size = 32
+theme_override_font_sizes/bold_italics_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/mono_font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_85s4h")
 bbcode_enabled = true
 text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
 scroll_active = false
 autowrap_mode = 2
-script = ExtResource("3_61ut7")
+
+[node name="AuthorTextLabel" type="RichTextLabel" parent="DialogView/DialogBackground" unique_id=1403334315]
+z_index = 3
+layout_mode = 0
+offset_left = 35.0
+offset_top = 735.0
+offset_right = 285.0
+offset_bottom = 805.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+theme_override_font_sizes/bold_italics_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/mono_font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_85s4h")
+bbcode_enabled = true
+text = "Mario Frugale"
+scroll_active = false
+autowrap_mode = 2
 
 [node name="TextManager" type="Node2D" parent="DialogView" unique_id=1929310804]
 script = ExtResource("3_48shk")

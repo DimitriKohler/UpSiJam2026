@@ -18,22 +18,23 @@ class Item:
 
 # List of items
 var items: Array[Item] = []
-var package: Item = null
+var packages: Array[Item] = []
 
-@onready var item_sprite: TextureRect = $"../Item"
-@onready var package_sprite: TextureRect = $"../../TargetPanel/Package"
-@onready var money_display: Label = $"../../../../GuiPanel/MoneyLabel"
+@onready var item_tex_rect: TextureRect = $"../MarginContainer/Item"
 
 func _ready():
 	# Add items
-	package = Item.new(ItemType.PACKAGE, "package")
+	packages.append(Item.new(ItemType.PACKAGE, "package0"))
+	packages.append(Item.new(ItemType.PACKAGE, "package1"))
+	packages.append(Item.new(ItemType.PACKAGE, "package2"))
+	
 	
 	items.append(Item.new(ItemType.USABLE, "redbull"))
 	items.append(Item.new(ItemType.OTHER, "gooddragon"))
 
-	# Debug print
-	for i in items:
-		print("Name: %s, Type: %s, Sprite: %s" % [i.name, i.type, i.sprite_path])
+	## Debug print
+	#for i in items:
+		#print("Name: %s, Type: %s, Sprite: %s" % [i.name, i.type, i.sprite_path])
 		
 		
 func spawn_item() -> void:
@@ -42,24 +43,7 @@ func spawn_item() -> void:
 	# TextureRect for sprite
 	var tex: Texture2D = load(item.sprite_path)
 	if tex:
-		item_sprite.texture = tex
+		item_tex_rect.texture = tex
 	else:
 		push_warning("Sprite not found: %s" % item.sprite_path)
 		
-func spawn_package() -> void:
-	# TextureRect for sprite
-	package_sprite.modulate.a = 1.0
-	
-	# Kill previous tween if any (prevents stacking)
-	if package_sprite.has_meta("fade_tween"):
-		var old_tween = item_sprite.get_meta("fade_tween")
-		if old_tween:
-			old_tween.kill()
-
-	# Create fade tween
-	var tween = create_tween()
-	package_sprite.set_meta("fade_tween", tween)
-
-	tween.tween_property(package_sprite, "modulate:a", 0.0, 1.0)
-	
-	money_display.update_money(0.05)

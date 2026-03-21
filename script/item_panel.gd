@@ -1,22 +1,28 @@
 extends Control
 
 var init_position: Vector2 = Vector2.ZERO
+var target_position: Vector2 = Vector2.ZERO
 
+var draggable: bool = false
 var dragging: bool = false
 var drag_offset: Vector2 = Vector2.ZERO
 var snap_offset: Vector2 = Vector2(-15,-45)
 
 var active_panel: Panel = null
 
-@onready var target_panel: Panel = $"../TargetPanel"
 @onready var cardboard_panel: Panel = $"../CardboardPanel"
-@onready var item_data = $ItemData
+@onready var target_panel: Panel = $"../TargetPanel"
+@onready var wrapping_script: Node2D = $"../../../WrappingMinigame"
 
 func _ready():
-	init_position = global_position
+	reset()
 
 func _gui_input(event):
 	if not cardboard_panel.done:
+		print("Move cardboard first")
+		return
+	if not draggable:
+		print("Wait for anim to finish")
 		return
 		
 	if event is InputEventMouseButton:
@@ -51,12 +57,26 @@ func _snap_to_target():
 	if active_panel:
 		global_position = target_panel.global_position + snap_offset
 		target_panel.modulate = Color(1,1,1)
-		item_data.spawn_package()
+		wrapping_script.instantiate_package()
 		cardboard_panel.reset()
-		_reset()
+		reset()
 	else:
-		global_position = init_position
+		global_position = target_position
 		
-func _reset():
-	active_panel = null
+		
+func move_in(duration: float):
 	global_position = init_position
+
+	var tween = create_tween()
+
+	tween.parallel().tween_property(self, "global_position", target_position, duration)
+	tween.parallel().tween_property(self, "modulate:a", 1.0, duration)
+	return await tween.finished
+
+
+func reset():
+	draggable = false
+	modulate.a = 0.0
+	active_panel = null
+	init_position = global_position + Vector2(0, -300)
+	target_position = global_position
