@@ -350,6 +350,7 @@ text = "0.00$"
 script = ExtResource("9_4qlv2")
 
 [node name="DialogView" type="Node2D" parent="." unique_id=970284022]
+visible = false
 
 [node name="DialogBackground" type="ColorRect" parent="DialogView" unique_id=1344932945]
 z_index = 1

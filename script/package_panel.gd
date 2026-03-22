@@ -1,69 +1,82 @@
 extends Panel
 
 var clickCount: int = 0
-var clickTarget: int = 4
+var clickTarget: int = 3
 
+var initPosition: Vector2 = Vector2.ZERO
+
+var glow_tween: Tween
+
+@onready var main_script: Node2D = $"../../../.."
 @onready var item_data: Node2D = $"../ItemPanel/ItemData"
+@onready var item_panel: Panel = $"../ItemPanel"
 @onready var wrapping_script: Node2D = $"../../../WrappingMinigame"
 @onready var package_tex_rect: TextureRect = $MarginContainer/Package
 @onready var clicker_button: Button = $ClickerButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	main_script.current_index_changed.connect(_on_current_index_changed)
+	main_script.state_changed.connect(_on_state_changed)
 	clicker_button.pressed.connect(_on_clicker_pressed)
 	reset()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+	
+func _on_state_changed(new_state):
 	pass
+
+func _on_current_index_changed(new_index):
+	if new_index == 4:
+		start_glow()
+	else:
+		stop_glow()
 
 func _on_clicker_pressed() -> void:
 	if not visible:
 		return
-
+	
+	clicker_button.visible = true
 	clickCount += wrapping_script.clickStrength
 
-	clicker_button.text = "Clicks: %d\nTarget: %d\nStrength: %d" % [
-		clickCount,
-		clickTarget,
-		wrapping_script.clickStrength
-	]
-
-	if clickCount >= clickTarget / 2:
+	if clickCount >= 1:
+		item_panel.visible = false
 		package_tex_rect.texture = load(item_data.packages[1].sprite_path)
 
-	if clickCount >= clickTarget:
+	if clickCount >= 2:
 		package_tex_rect.texture = load(item_data.packages[2].sprite_path)
-		await send_package(Vector2(100, -100), 2.0)
+		
+	if clickCount >= clickTarget:
+		clicker_button.visible = false
+		await send_package(Vector2(0, -600), 1.0)
+		if main_script.get_current_index() == 4:
+			main_script.next()
 		reset()
 
-func send_package(offset: Vector2, duration: float) -> void:
-	# Create a copy of the TextureRect
-	var sprite_copy = package_tex_rect.duplicate() as TextureRect
-
-	sprite_copy.global_position = package_tex_rect.global_position
-	sprite_copy.visible = true
-	sprite_copy.modulate.a = 1.0
-
-	# Add it to the same parent as the panel (or any suitable node)
-	get_parent().add_child(sprite_copy)
+func send_package(offset: Vector2, duration: float):
 
 	# Calculate target position
-	var target_position = sprite_copy.global_position + offset
+	var target_position = global_position + offset
 
 	# Create a tween to move and fade the copy
 	var tween = create_tween()
-	tween.parallel().tween_property(sprite_copy, "global_position", target_position, duration)
-	tween.parallel().tween_property(sprite_copy, "modulate:a", 0.0, duration)
+	tween.parallel().tween_property(self, "global_position", target_position, duration)
+	tween.parallel().tween_property(self, "modulate:a", 0.0, duration)
 
-	# Wait until tween finishes
-	await tween.finished
-
-	# Remove the copy from the scene
-	sprite_copy.queue_free()
+	return await tween.finished
 
 func reset():
+	initPosition = global_position
 	clickCount = 0
 	visible = false
 	#clickTarget *= wrapping_script.difficulty # problem ever increasing diff 
 	package_tex_rect.texture = load(item_data.packages[0].sprite_path)
+	
+func start_glow():
+	glow_tween = create_tween().set_loops()
+	glow_tween.tween_property(self, "modulate", Color(1.4,1.4,1.4), 0.5)
+	glow_tween.tween_property(self, "modulate", Color(1,1,1), 0.5)
+
+func stop_glow():
+	if glow_tween:
+		glow_tween.kill()
+	modulate = Color(1,1,1)
+	

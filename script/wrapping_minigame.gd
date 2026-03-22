@@ -34,7 +34,7 @@ func _on_state_changed(new_state):
 		set_work_state(WorkState.START_WAITING_FOR_ITEM)
 		await instantiate_item(1.0)
 	
-
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var current_state = main_script.get_state()
@@ -86,8 +86,7 @@ func instantiate_item(duration: float):
 	set_work_state(WorkState.ITEM_READY)
 
 func instantiate_package() -> void:
-	# TextureRect for sprite
+	cardboard_panel.visible = false
 	package_panel.visible = true
 	set_work_state(WorkState.ITEM_PLACED)
-	
 	

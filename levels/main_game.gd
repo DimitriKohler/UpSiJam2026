@@ -16,44 +16,44 @@ var state_list := [
 	GameState.TUTO,
 	GameState.TUTO,
 	GameState.DIALOG,
+	GameState.WORK,
+	GameState.DIALOG,
+	GameState.WORK,
+	GameState.DIALOG,
+	GameState.WORK,
+	GameState.WORK,
+	GameState.DIALOG,
+	GameState.WORK,
+	GameState.WORK,
+	GameState.DIALOG,
+	GameState.TUTO,
+	GameState.DIALOG,
+	GameState.WORK,
+	GameState.DIALOG,
+	GameState.DIALOG,
+	GameState.DIALOG,
+	GameState.WORK,
+	GameState.WORK,
 	GameState.DIALOG,
 	GameState.DIALOG,
 	GameState.DIALOG,
 	GameState.DIALOG,
+#	GameState.DIALOG,
+	GameState.WORK,
+	GameState.WORK,
+	GameState.WORK,
+	GameState.TUTO,
 	GameState.DIALOG,
 	GameState.DIALOG,
-	GameState.DIALOG,
-	GameState.DIALOG,
-	GameState.DIALOG,
-	GameState.DIALOG,
-	GameState.DIALOG,
-	GameState.DIALOG,
-	GameState.DIALOG,
-	GameState.DIALOG,
-	GameState.DIALOG,
-	GameState.DIALOG,
-	GameState.DIALOG,
-	GameState.DIALOG,
-	GameState.DIALOG,
-	GameState.DIALOG,
-	GameState.DIALOG,
-	GameState.DIALOG,
-	GameState.DIALOG,
-	GameState.DIALOG,
-	GameState.DIALOG,
-	GameState.DIALOG,
-	GameState.DIALOG,
-	GameState.DIALOG,
-	GameState.DIALOG	
+	GameState.DIALOG
 ]  
 
-var count_list := [
-	
-]
-
+#var count_list := [
+	#
+#]
 
 var current_state: GameState = GameState.DEFAULT
-var current_index: int = 1
+var current_index: int = -1
 
 signal state_changed(new_state: GameState)
 signal current_index_changed(new_index: int)

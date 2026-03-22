@@ -32,7 +32,7 @@ var dialogue := [
 	["[b]Mario Frugale[/b]", "Est-ce que vous pouvez m’accorder cinq minutes pour aller aux toilettes s’il vous plaît ?"],
 	["[b]Beff Jezos[/b]", "Euh. Non. Vous n’avez pas une gourde ?"],
 	["[b]Mario Frugale[/b]", "…"],
-	["[b]Mario Frugale[/b]", "[i]T’es réellement… en train de faire ça là ?[/i]"],
+#	["[b]Mario Frugale[/b]", "[i]T’es réellement… en train de faire ça là ?[/i]"],
 	["[b]Beff Jezos[/b]", "Surtout n’oubliez jamais que vous n’êtes qu’une ressource remplaçable Marco ! Tout comme ma Edison Type L  avec 500km au compteur, bonne pour la casse, rien d’autre. Méfiez-vous."],
 	["[b]Mario Frugale[/b]", "[i]Encore une fois, tu ne fais qu'obtempérer. 10 ct la minute... En plus il ne se souvient même pas de ton nom. Une famille hein.[/i]"],
 	["[b]Mario Frugale[/b]", "[i]C’est vraiment ça que tu veux faire ? Toute ta vie ? T’en peux déjà plus… “Avancer”, dans ce monde ? Tu dois changer quelque chose, tu dois changer les choses. Tu dois saisir l’occasion. Rapidement.[/i]"],

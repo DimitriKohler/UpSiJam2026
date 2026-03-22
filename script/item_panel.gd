@@ -96,7 +96,7 @@ func reset():
 	scale = Vector2.ONE
 	modulate.a = 0.0
 	active_panel = null
-	init_position = global_position + Vector2(0, -300)
+	init_position = global_position + Vector2(0, -400)
 	target_position = global_position
 	
 func start_glow():
