@@ -39,7 +39,7 @@ func _on_state_changed(new_state):
 func _process(delta: float) -> void:
 	var current_state = main_script.get_state()
 
-	if current_state == main_script.GameState.WORK:
+	if current_state == main_script.GameState.WORK or current_state == main_script.GameState.TUTO:
 		match current_work_state:
 			WorkState.IDLE:
 				pass
@@ -77,7 +77,7 @@ func _process(delta: float) -> void:
 
 func set_work_state(work_state: WorkState) -> void:
 	current_work_state = work_state
-	#print(" * Work State changed to:", current_work_state)
+	print(" * Work State changed to:", WorkState.keys()[work_state])
 
 func instantiate_item(duration: float):
 	item_panel.reset()

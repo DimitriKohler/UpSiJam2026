@@ -21,6 +21,24 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mfxpw"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mfxpw"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.3529412)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.4, 0.4, 0.4, 0.44705883)
+border_blend = true
+corner_radius_top_left = 250
+corner_radius_top_right = 250
+corner_radius_bottom_right = 250
+corner_radius_bottom_left = 250
+corner_detail = 10
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_be87d"]
 bg_color = Color(1, 1, 1, 0.1764706)
 border_width_left = 12
@@ -253,6 +271,7 @@ offset_right = 225.0
 offset_bottom = 211.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_mfxpw")
 
 [node name="TargetPanel" type="Panel" parent="MainView/Background/Workbench" unique_id=72986764]
 layout_mode = 0

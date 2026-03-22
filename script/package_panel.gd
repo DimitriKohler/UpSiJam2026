@@ -1,42 +1,41 @@
 extends Panel
 
 var clickCount: int = 0
-var clickTarget: int = 6
+var clickTarget: int = 4
 
 @onready var item_data: Node2D = $"../ItemPanel/ItemData"
 @onready var wrapping_script: Node2D = $"../../../WrappingMinigame"
 @onready var package_tex_rect: TextureRect = $MarginContainer/Package
-@onready var debug_label: Label = $Label
+@onready var clicker_button: Button = $ClickerButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	clicker_button.pressed.connect(_on_clicker_pressed)
 	reset()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
-func _gui_input(event: InputEvent) -> void:
+func _on_clicker_pressed() -> void:
 	if not visible:
 		return
-		
-	if event is InputEventMouseButton:
-		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-			clickCount += wrapping_script.clickStrength
-			
-			debug_label.text = "Clicks: %d\nTarget: %d\nStrength: %d" % [
-				clickCount,
-				clickTarget,
-				wrapping_script.clickStrength
-			]			
-			
-			if clickCount >= clickTarget / 2:	
-				package_tex_rect.texture = load(item_data.packages[1].sprite_path)
-			if clickCount >= clickTarget:
-				package_tex_rect.texture = load(item_data.packages[2].sprite_path)
-				await send_package(Vector2(100, -100), 2.0)
-				reset()
-			#wrapping_script.call("on_panel_clicked", clickCount)
+
+	clickCount += wrapping_script.clickStrength
+
+	clicker_button.text = "Clicks: %d\nTarget: %d\nStrength: %d" % [
+		clickCount,
+		clickTarget,
+		wrapping_script.clickStrength
+	]
+
+	if clickCount >= clickTarget / 2:
+		package_tex_rect.texture = load(item_data.packages[1].sprite_path)
+
+	if clickCount >= clickTarget:
+		package_tex_rect.texture = load(item_data.packages[2].sprite_path)
+		await send_package(Vector2(100, -100), 2.0)
+		reset()
 
 func send_package(offset: Vector2, duration: float) -> void:
 	# Create a copy of the TextureRect
@@ -66,5 +65,5 @@ func send_package(offset: Vector2, duration: float) -> void:
 func reset():
 	clickCount = 0
 	visible = false
-	clickTarget *= wrapping_script.difficulty
+	#clickTarget *= wrapping_script.difficulty # problem ever increasing diff 
 	package_tex_rect.texture = load(item_data.packages[0].sprite_path)

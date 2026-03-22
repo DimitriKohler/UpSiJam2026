@@ -29,11 +29,11 @@ border_width_right = 12
 border_width_bottom = 12
 border_color = Color(0.7, 0.7, 0.7, 0.3529412)
 border_blend = true
-corner_radius_top_left = 40
-corner_radius_top_right = 40
-corner_radius_bottom_right = 40
-corner_radius_bottom_left = 40
-shadow_color = Color(0.7, 0.7, 0.7, 0.1764706)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(1, 0.7125, 0.25, 0.1764706)
 shadow_size = 14
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bprcb"]
@@ -84,7 +84,6 @@ texture = ExtResource("3_mfxpw")
 expand_mode = 2
 
 [node name="ItemPanel" type="Panel" parent="MainView/Background/Workbench" unique_id=2024458761]
-z_index = 1
 layout_mode = 0
 offset_left = 190.0
 offset_top = 350.0
@@ -114,79 +113,7 @@ expand_mode = 3
 [node name="ItemData" type="Node2D" parent="MainView/Background/Workbench/ItemPanel" unique_id=201528320]
 script = ExtResource("5_u4di8")
 
-[node name="CardboardPanelCopy" type="Panel" parent="MainView/Background/Workbench" unique_id=1761449294]
-layout_mode = 0
-offset_left = 1190.0
-offset_top = 375.0
-offset_right = 1702.0
-offset_bottom = 662.9999
-theme_override_styles/panel = SubResource("StyleBoxEmpty_4qlv2")
-
-[node name="MarginContainer2" type="MarginContainer" parent="MainView/Background/Workbench/CardboardPanelCopy" unique_id=1978338826]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3.0
-offset_top = -7.0
-offset_right = 3.0
-offset_bottom = -7.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = -80
-theme_override_constants/margin_top = -45
-theme_override_constants/margin_right = -80
-theme_override_constants/margin_bottom = -45
-
-[node name="Cardboard" type="TextureRect" parent="MainView/Background/Workbench/CardboardPanelCopy/MarginContainer2" unique_id=320048711]
-layout_mode = 2
-texture = ExtResource("8_op16g")
-expand_mode = 1
-
-[node name="MarginContainer3" type="MarginContainer" parent="MainView/Background/Workbench/CardboardPanelCopy" unique_id=1416365864]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 5.0
-offset_top = -15.0
-offset_right = 5.0
-offset_bottom = -15.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = -80
-theme_override_constants/margin_top = -45
-theme_override_constants/margin_right = -80
-theme_override_constants/margin_bottom = -45
-
-[node name="Cardboard" type="TextureRect" parent="MainView/Background/Workbench/CardboardPanelCopy/MarginContainer3" unique_id=1098452600]
-layout_mode = 2
-texture = ExtResource("8_op16g")
-expand_mode = 1
-
-[node name="MarginContainer4" type="MarginContainer" parent="MainView/Background/Workbench/CardboardPanelCopy" unique_id=1895151063]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 13.0
-offset_top = -20.0
-offset_right = 12.999023
-offset_bottom = -20.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = -80
-theme_override_constants/margin_top = -45
-theme_override_constants/margin_right = -80
-theme_override_constants/margin_bottom = -45
-
-[node name="Cardboard" type="TextureRect" parent="MainView/Background/Workbench/CardboardPanelCopy/MarginContainer4" unique_id=1672610262]
-layout_mode = 2
-texture = ExtResource("8_op16g")
-expand_mode = 1
-
 [node name="CardboardPanel" type="Panel" parent="MainView/Background/Workbench" unique_id=780149738]
-z_index = 1
 layout_mode = 0
 offset_left = 1210.0
 offset_top = 350.0
@@ -208,6 +135,69 @@ theme_override_constants/margin_right = -80
 theme_override_constants/margin_bottom = -45
 
 [node name="Cardboard" type="TextureRect" parent="MainView/Background/Workbench/CardboardPanel/MarginContainer" unique_id=178568159]
+layout_mode = 2
+texture = ExtResource("8_op16g")
+expand_mode = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="MainView/Background/Workbench/CardboardPanel" unique_id=795348986]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -7.0
+offset_right = 3.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = -80
+theme_override_constants/margin_top = -45
+theme_override_constants/margin_right = -80
+theme_override_constants/margin_bottom = -45
+
+[node name="Cardboard" type="TextureRect" parent="MainView/Background/Workbench/CardboardPanel/MarginContainer2" unique_id=594212536]
+layout_mode = 2
+texture = ExtResource("8_op16g")
+expand_mode = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="MainView/Background/Workbench/CardboardPanel" unique_id=434541491]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = -15.0
+offset_right = 5.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = -80
+theme_override_constants/margin_top = -45
+theme_override_constants/margin_right = -80
+theme_override_constants/margin_bottom = -45
+
+[node name="Cardboard" type="TextureRect" parent="MainView/Background/Workbench/CardboardPanel/MarginContainer3" unique_id=1553011927]
+layout_mode = 2
+texture = ExtResource("8_op16g")
+expand_mode = 1
+
+[node name="MarginContainer4" type="MarginContainer" parent="MainView/Background/Workbench/CardboardPanel" unique_id=1674452811]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = -20.0
+offset_right = 12.9991455
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = -80
+theme_override_constants/margin_top = -45
+theme_override_constants/margin_right = -80
+theme_override_constants/margin_bottom = -45
+
+[node name="Cardboard" type="TextureRect" parent="MainView/Background/Workbench/CardboardPanel/MarginContainer4" unique_id=1487420657]
 layout_mode = 2
 texture = ExtResource("8_op16g")
 expand_mode = 1
@@ -239,27 +229,19 @@ layout_mode = 2
 texture = ExtResource("8_cl5jp")
 expand_mode = 1
 
-[node name="ClickerButton" type="Button" parent="MainView/Background/Workbench/PackagePanel" unique_id=21834332]
-z_index = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -225.0
-offset_top = -239.0
-offset_right = 225.0
-offset_bottom = 211.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="DebugLabel" type="Label" parent="MainView/Background/Workbench/PackagePanel" unique_id=1058696364]
+layout_mode = 0
+offset_left = 9.431763
+offset_top = -80.65338
+offset_right = 75.36914
+offset_bottom = -38.789795
 
 [node name="TargetPanel" type="Panel" parent="MainView/Background/Workbench" unique_id=72986764]
 layout_mode = 0
-offset_left = 780.0
+offset_left = 700.0
 offset_top = 580.0
-offset_right = 1132.0
-offset_bottom = 828.0
+offset_right = 1212.0
+offset_bottom = 868.0
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_be87d")
 
@@ -296,6 +278,7 @@ text = "Avertissement légal
 Ce jeu est purement une oeuvre de fiction. Toute ressemblence avec des éléments ou personnes réels est purement fortuite."
 
 [node name="MoneyLabel" type="Label" parent="MainView" unique_id=1513397655]
+visible = false
 offset_left = 1680.0884
 offset_top = 25.00978
 offset_right = 1896.1301

@@ -45,18 +45,20 @@ var dialogue := [
 	["[b]Beff Jezos[/b]", "Vous êtes vraiment inutile ! Vous ne me servez à rien ! Rentrez chez vous que je ne vous revois plus jamais !"], #Fin C
 ]
 
-
-@onready var main_script: Node2D = $"../.."
-@onready var background: Control = $"../DialogBackground"
-@onready var boss_tex_rect: TextureRect = $"../DialogBackground/Boss"
-@onready var author_label: RichTextLabel = $"../DialogBackground/AuthorTextLabel"
-@onready var dialog_label: RichTextLabel = $"../DialogBackground/MarginContainer/DialogTextLabel"
-
+var init_boss_position: Vector2 = Vector2.ZERO
 var writing: bool = false
 
+@onready var main_script: Node2D = $"../.."
+@onready var dialog_view: Node2D = $".."
+@onready var background: Control = $"../DialogBackground"
+@onready var boss_tex_rect: TextureRect = $"../Boss"
+@onready var author_label: RichTextLabel = $"../AuthorTextLabel"
+@onready var dialog_label: RichTextLabel = $"../MarginContainer/DialogTextLabel"
+
 func _ready():
+	init_boss_position = boss_tex_rect.global_position
 	dialog_label.mouse_filter = Control.MOUSE_FILTER_STOP
-	dialog_label.gui_input.connect(_on_dialog_label_gui_input)	
+	dialog_label.gui_input.connect(_on_dialog_label_gui_input)
 	main_script.current_index_changed.connect(_on_current_index_changed)
 	main_script.state_changed.connect(_on_state_changed)
 
@@ -64,12 +66,20 @@ func _ready():
 func _on_state_changed(new_state):
 	if new_state == main_script.GameState.DIALOG:
 		background.visible = true
-	else:
+	elif new_state == main_script.GameState.TUTO:
 		background.visible = false
+	else:
+		dialog_view.visible = false
 
 func _on_current_index_changed(new_index):
 	if dialogue[new_index][0] == "[b]Beff Jezos[/b]":
 		boss_tex_rect.visible = true
+		if new_index == 2:
+			boss_tex_rect.global_position = Vector2(-450, 216)
+			boss_tex_rect.flip_h = true
+		else:
+			boss_tex_rect.flip_h = false
+			boss_tex_rect.global_position = init_boss_position
 	else:
 		boss_tex_rect.visible = false
 		

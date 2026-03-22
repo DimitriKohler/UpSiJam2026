@@ -53,7 +53,7 @@ var count_list := [
 
 
 var current_state: GameState = GameState.DEFAULT
-var current_index: int = -1
+var current_index: int = 1
 
 signal state_changed(new_state: GameState)
 signal current_index_changed(new_index: int)
