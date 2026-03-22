@@ -67,6 +67,7 @@ signal current_index_changed(new_index: int)
 
 func _ready():
 	await intro()
+	test_sounds()
 	money_label.visible = true
 	next()
 
@@ -143,3 +144,9 @@ func intro() -> void:
 	# Hide everything at the end
 	disclaimer_panel.visible = false
 	disclaimer_label.visible = false
+	
+	
+	
+	
+func test_sounds():
+	

@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://bm6ocslsj7vtm" path="res://script/money_label.gd" id="9_4qlv2"]
 [ext_resource type="Texture2D" uid="uid://cxmlw00q6usdq" path="res://visual/sprite/package2.png" id="10_bprcb"]
 [ext_resource type="Texture2D" uid="uid://bxtns37kwq4t8" path="res://visual/sprite/Jezos.png" id="14_op16g"]
+[ext_resource type="AudioStream" uid="uid://bes5ejmjks4ne" path="res://sounds/CREDIT-SD-Ambiance_usine.ogg" id="15_mfxpw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_32443"]
 
@@ -425,3 +426,9 @@ autowrap_mode = 2
 
 [node name="TextManager" type="Node2D" parent="DialogView" unique_id=1929310804]
 script = ExtResource("3_48shk")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=206533267]
+
+[node name="BGSounds" type="AudioStreamPlayer" parent="AudioStreamPlayer" unique_id=589341172]
+stream = ExtResource("15_mfxpw")
+autoplay = true
