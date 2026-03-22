@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://bvqu36bmuxjv1" path="res://visual/image/desk.png" id="3_mfxpw"]
 [ext_resource type="Script" uid="uid://46btr8ec1ijj" path="res://script/cardboard_panel.gd" id="4_o5002"]
 [ext_resource type="Script" uid="uid://degcl3i8joxp0" path="res://script/item_panel.gd" id="4_u4di8"]
-[ext_resource type="Texture2D" uid="uid://cs8r0drorcn6k" path="res://visual/sprite/gooddragon.png" id="5_mfxpw"]
 [ext_resource type="Script" uid="uid://b1pbjx4elyf0f" path="res://script/item_data.gd" id="5_u4di8"]
 [ext_resource type="Script" uid="uid://c1ifjojmohpuk" path="res://script/package_panel.gd" id="8_5lvy4"]
 [ext_resource type="Texture2D" uid="uid://cc03oaa78tilh" path="res://visual/image/carboard.png" id="8_op16g"]
@@ -16,6 +15,8 @@
 [ext_resource type="AudioStream" uid="uid://bes5ejmjks4ne" path="res://sounds/CREDIT-SD-Ambiance_usine.ogg" id="15_mfxpw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_32443"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5lvy4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4qlv2"]
 
@@ -151,7 +152,7 @@ theme_override_constants/margin_bottom = 9
 [node name="Item" type="TextureRect" parent="MainView/Background/Workbench/ItemPanel/MarginContainer" unique_id=684429926]
 z_index = 1
 layout_mode = 2
-texture = ExtResource("5_mfxpw")
+texture = SubResource("CompressedTexture2D_5lvy4")
 expand_mode = 3
 
 [node name="ItemData" type="Node2D" parent="MainView/Background/Workbench/ItemPanel" unique_id=201528320]
@@ -421,7 +422,6 @@ theme_override_font_sizes/italics_font_size = 32
 theme_override_font_sizes/mono_font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_85s4h")
 bbcode_enabled = true
-text = "Mario Frugale"
 scroll_active = false
 autowrap_mode = 2
 
