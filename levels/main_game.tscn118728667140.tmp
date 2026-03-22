@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cc03oaa78tilh" path="res://visual/image/carboard.png" id="8_op16g"]
 [ext_resource type="Script" uid="uid://bm6ocslsj7vtm" path="res://script/money_label.gd" id="9_4qlv2"]
 [ext_resource type="Texture2D" uid="uid://cxmlw00q6usdq" path="res://visual/sprite/package2.png" id="10_bprcb"]
+[ext_resource type="Script" uid="uid://c4bt0ori0dci0" path="res://script/wrapping_minigame.gd" id="10_cl5jp"]
 [ext_resource type="Texture2D" uid="uid://bxtns37kwq4t8" path="res://visual/sprite/Jezos.png" id="14_op16g"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_32443"]
@@ -126,7 +127,7 @@ texture = ExtResource("3_mfxpw")
 expand_mode = 2
 
 [node name="ItemPanel" type="Panel" parent="MainView/Background/Workbench" unique_id=2024458761]
-z_index = 2
+z_index = 1
 layout_mode = 0
 offset_left = 190.0
 offset_top = 350.0
@@ -228,7 +229,7 @@ texture = ExtResource("8_op16g")
 expand_mode = 1
 
 [node name="CardboardPanel" type="Panel" parent="MainView/Background/Workbench" unique_id=780149738]
-z_index = 2
+z_index = 1
 layout_mode = 0
 offset_left = 1210.0
 offset_top = 350.0
@@ -255,7 +256,6 @@ texture = ExtResource("8_op16g")
 expand_mode = 1
 
 [node name="PackagePanel" type="Panel" parent="MainView/Background/Workbench" unique_id=1414832385]
-z_index = 1
 layout_mode = 0
 offset_left = 715.0
 offset_top = 560.0
@@ -305,12 +305,14 @@ offset_left = 780.0
 offset_top = 580.0
 offset_right = 1132.0
 offset_bottom = 828.0
-mouse_filter = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_be87d")
+
+[node name="WrappingMinigame" type="Node2D" parent="MainView" unique_id=132006585]
+script = ExtResource("10_cl5jp")
 
 [node name="DisclaimerPanel" type="Panel" parent="MainView" unique_id=1963876684]
 visible = false
-z_index = 10
 offset_right = 1920.0
 offset_bottom = 1080.0
 mouse_filter = 2
@@ -350,7 +352,7 @@ script = ExtResource("9_4qlv2")
 [node name="DialogView" type="Node2D" parent="." unique_id=970284022]
 
 [node name="DialogBackground" type="ColorRect" parent="DialogView" unique_id=1344932945]
-z_index = 3
+z_index = 1
 offset_left = 14.640991
 offset_top = -1.3309937
 offset_right = 1934.641
@@ -358,7 +360,7 @@ offset_bottom = 1078.669
 color = Color(0, 0, 0, 0.5019608)
 
 [node name="Boss" type="TextureRect" parent="DialogView" unique_id=1570021985]
-z_index = 3
+z_index = 2
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -392,7 +394,7 @@ theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
 [node name="DialogTextLabel" type="RichTextLabel" parent="DialogView/MarginContainer" unique_id=39739027]
-z_index = 3
+z_index = 2
 layout_mode = 2
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/normal_font_size = 32
@@ -406,7 +408,7 @@ scroll_active = false
 autowrap_mode = 2
 
 [node name="AuthorTextLabel" type="RichTextLabel" parent="DialogView" unique_id=1403334315]
-z_index = 3
+z_index = 2
 offset_left = 35.0
 offset_top = 735.0
 offset_right = 285.0

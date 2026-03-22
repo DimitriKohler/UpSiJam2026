@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byl3o85d8mn07"
-path="res://.godot/imported/redbull.png-7d1bc597bd0ff5c7f7e4173d1dbd3610.ctex"
+uid="uid://2iqdj85k6v14"
+path="res://.godot/imported/pq.png-422d77cae948d06ef7388a9c194e1fe9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://visual/sprite/redbull.png"
-dest_files=["res://.godot/imported/redbull.png-7d1bc597bd0ff5c7f7e4173d1dbd3610.ctex"]
+source_file="res://visual/sprite/pq.png"
+dest_files=["res://.godot/imported/pq.png-422d77cae948d06ef7388a9c194e1fe9.ctex"]
 
 [params]
 

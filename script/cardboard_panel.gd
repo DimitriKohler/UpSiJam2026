@@ -16,6 +16,7 @@ var glow_tween: Tween
 @onready var target_panel: Panel = $"../TargetPanel"
 
 func _ready():
+	init_position = global_position
 	main_script.current_index_changed.connect(_on_current_index_changed)
 	main_script.state_changed.connect(_on_state_changed)
 	reset()
@@ -69,16 +70,15 @@ func _snap_to_target():
 		done = true
 		# Cant reset to keep done true
 		active_panel = null
-		init_position = global_position
 		if main_script.get_current_index() == 2:
 			main_script.next()
 	else:
 		global_position = init_position
 
 func reset():
+	visible = true
 	done = false
-	active_panel = null
-	init_position = global_position
+	global_position = init_position
 	
 func start_glow():
 	glow_tween = create_tween().set_loops()

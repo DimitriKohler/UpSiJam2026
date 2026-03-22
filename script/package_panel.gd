@@ -3,19 +3,22 @@ extends Panel
 var clickCount: int = 0
 var clickTarget: int = 3
 
-var initPosition: Vector2 = Vector2.ZERO
+var init_position: Vector2 = Vector2.ZERO
 
 var glow_tween: Tween
 
 @onready var main_script: Node2D = $"../../../.."
 @onready var item_data: Node2D = $"../ItemPanel/ItemData"
+@onready var cardboard_panel: Panel = $"../CardboardPanel"
 @onready var item_panel: Panel = $"../ItemPanel"
+@onready var money_label: Label = $"../../../MoneyLabel"
 @onready var wrapping_script: Node2D = $"../../../WrappingMinigame"
 @onready var package_tex_rect: TextureRect = $MarginContainer/Package
 @onready var clicker_button: Button = $ClickerButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	init_position = global_position
 	main_script.current_index_changed.connect(_on_current_index_changed)
 	main_script.state_changed.connect(_on_state_changed)
 	clicker_button.pressed.connect(_on_clicker_pressed)
@@ -35,7 +38,7 @@ func _on_clicker_pressed() -> void:
 		return
 	
 	clicker_button.visible = true
-	clickCount += wrapping_script.clickStrength
+	clickCount += 1
 
 	if clickCount >= 1:
 		item_panel.visible = false
@@ -47,9 +50,18 @@ func _on_clicker_pressed() -> void:
 	if clickCount >= clickTarget:
 		clicker_button.visible = false
 		await send_package(Vector2(0, -600), 1.0)
-		if main_script.get_current_index() == 4:
-			main_script.next()
+		print("\n * PACKAGE SENT *\n")
+		money_label.update_money(0.2)
+		if main_script.get_state() == main_script.GameState.WORK:
+			main_script.next(0)
+		else:
+			main_script.next(1)
 		reset()
+		
+func instantiate_package() -> void:
+	cardboard_panel.visible = false
+	visible = true
+	clicker_button.visible = true
 
 func send_package(offset: Vector2, duration: float):
 
@@ -64,10 +76,9 @@ func send_package(offset: Vector2, duration: float):
 	return await tween.finished
 
 func reset():
-	initPosition = global_position
+	global_position = init_position
 	clickCount = 0
 	visible = false
-	#clickTarget *= wrapping_script.difficulty # problem ever increasing diff 
 	package_tex_rect.texture = load(item_data.packages[0].sprite_path)
 	
 func start_glow():

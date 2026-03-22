@@ -65,25 +65,30 @@ func _ready():
 
 func _on_state_changed(new_state):
 	if new_state == main_script.GameState.DIALOG:
+		dialog_view.visible = true
 		background.visible = true
 	elif new_state == main_script.GameState.TUTO:
+		dialog_view.visible = true
 		background.visible = false
 	else:
 		dialog_view.visible = false
 
+
 func _on_current_index_changed(new_index):
-	if dialogue[new_index][0] == "[b]Beff Jezos[/b]":
-		boss_tex_rect.visible = true
-		if new_index == 2:
-			boss_tex_rect.global_position = Vector2(-450, 216)
-			boss_tex_rect.flip_h = true
+	if main_script.get_state() != main_script.GameState.WORK:
+
+		if dialogue[new_index][0] == "[b]Beff Jezos[/b]":
+			boss_tex_rect.visible = true
+			if new_index == 2:
+				boss_tex_rect.global_position = Vector2(-450, 216)
+				boss_tex_rect.flip_h = true
+			else:
+				boss_tex_rect.flip_h = false
+				boss_tex_rect.global_position = init_boss_position
 		else:
-			boss_tex_rect.flip_h = false
-			boss_tex_rect.global_position = init_boss_position
-	else:
-		boss_tex_rect.visible = false
+			boss_tex_rect.visible = false
 		
-	write_dialog()
+		write_dialog()
 	
 
 func _on_dialog_label_gui_input(event: InputEvent) -> void:
@@ -94,17 +99,18 @@ func _on_dialog_label_gui_input(event: InputEvent) -> void:
 				writing = false
 			else:
 				if main_script.get_state() == main_script.GameState.DIALOG:
-					main_script.next(1)
+					main_script.next()
 
 
 func write_dialog():
 	var current_dialog = dialogue[main_script.get_current_index()]
 	
 	author_label.text = "%s" % current_dialog[0]
-	write_text_over_time(current_dialog[1], 0.05)
+	print("Launch write")
+	write_text_over_time(current_dialog[1])
 
 
-func write_text_over_time(text: String, char_delay: float = 0.05) -> void:
+func write_text_over_time(text: String, char_delay: float = 0.01) -> void:
 	writing = true
 	dialog_label.clear()
 	dialog_label.visible_characters = 0

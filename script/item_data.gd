@@ -28,9 +28,13 @@ func _ready():
 	packages.append(Item.new(ItemType.PACKAGE, "package1"))
 	packages.append(Item.new(ItemType.PACKAGE, "package2"))
 	
-	
 	items.append(Item.new(ItemType.USABLE, "redbull"))
+	#items.append(Item.new(ItemType.OTHER, "gooddragon"))
+	items.append(Item.new(ItemType.USABLE, "pq"))
+	items.append(Item.new(ItemType.OTHER, "gtu"))
+	items.append(Item.new(ItemType.USABLE, "knife"))
 	items.append(Item.new(ItemType.OTHER, "gooddragon"))
+	
 
 	## Debug print
 	#for i in items:

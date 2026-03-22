@@ -77,13 +77,13 @@ func _process(delta: float) -> void:
 
 func next(increment: int = 1):
 	_set_index(current_index + increment)
-	_set_state(state_list[current_index])
+	if increment == 0:
+		set_state(GameState.DIALOG)
+	else:
+		set_state(state_list[current_index])
 	
 	
 func _set_index(new_index: int) -> void:
-	if current_index == new_index:
-		return
-		
 	current_index = new_index
 	emit_signal("current_index_changed", new_index)
 	print("Current index changed to:", new_index)
@@ -92,7 +92,7 @@ func _set_index(new_index: int) -> void:
 func get_current_index() -> int:
 	return current_index
 	
-func _set_state(new_state: GameState) -> void:
+func set_state(new_state: GameState) -> void:
 	if current_state == new_state:
 		return
 
