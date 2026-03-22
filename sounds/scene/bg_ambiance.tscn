@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://chyb6mbwhlrbu"]
+
+[ext_resource type="AudioStream" uid="uid://bes5ejmjks4ne" path="res://sounds/CREDIT-SD-Ambiance_usine.ogg" id="1_vovqe"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" unique_id=602326361]
+stream = ExtResource("1_vovqe")
+autoplay = true
