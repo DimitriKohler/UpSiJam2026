@@ -75,6 +75,7 @@ func _snap_to_target():
 		scale = Vector2(0.5,0.5)
 		target_panel.modulate = Color(1,1,1)
 		package_panel.instantiate_package()
+		$"../../../../AudioStreamPlayer/DropItem".play()
 		#target_panel.visible = false
 		draggable = false
 		cardboard_panel.reset()

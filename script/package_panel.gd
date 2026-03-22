@@ -30,6 +30,7 @@ func _on_state_changed(new_state):
 func _on_current_index_changed(new_index):
 	if new_index == 4:
 		start_glow()
+		$"../../../../AudioStreamPlayer/DropItem".play()
 	else:
 		stop_glow()
 
@@ -40,7 +41,14 @@ func _on_clicker_pressed() -> void:
 	clicker_button.visible = true
 	clickCount += 1
 
-	if clickCount >= 1:
+	if clickCount == 1:
+		var adhesive_list:=[
+			$"../../../../AudioStreamPlayer/Adhesive1",
+			$"../../../../AudioStreamPlayer/Adhesive2",
+			$"../../../../AudioStreamPlayer/Adhesive3"
+		]
+		var adhesive = adhesive_list[randi() % adhesive_list.size()]
+		adhesive.play()
 		item_panel.visible = false
 		package_tex_rect.texture = load(item_data.packages[1].sprite_path)
 
@@ -64,6 +72,7 @@ func instantiate_package() -> void:
 	clicker_button.visible = true
 
 func send_package(offset: Vector2, duration: float):
+	$"../../../../AudioStreamPlayer/DragAway".play()
 
 	# Calculate target position
 	var target_position = global_position + offset

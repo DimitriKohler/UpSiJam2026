@@ -39,6 +39,7 @@ func _gui_input(event):
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			dragging = event.pressed
 			if dragging:
+				$"../../../../AudioStreamPlayer/DragForward".play()
 				drag_offset = get_global_mouse_position() - global_position
 			else:
 				_snap_to_target()

@@ -131,7 +131,7 @@ color = Color(0.7, 0.47973335, 0.287, 1)
 
 [node name="BGSound" type="AudioStreamPlayer" parent="." unique_id=903992405]
 stream = SubResource("AudioStreamOggVorbis_duh7t")
-volume_db = -40.0
+volume_db = -20.0
 autoplay = true
 
 [connection signal="drag_started" from="MainContainer/SettingsMenu/VolumeContainer/VolumeSlider" to="." method="_on_volume_slider_drag_started"]

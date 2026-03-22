@@ -12,7 +12,14 @@
 [ext_resource type="Script" uid="uid://bm6ocslsj7vtm" path="res://script/money_label.gd" id="9_4qlv2"]
 [ext_resource type="Texture2D" uid="uid://cxmlw00q6usdq" path="res://visual/sprite/package2.png" id="10_bprcb"]
 [ext_resource type="Texture2D" uid="uid://bxtns37kwq4t8" path="res://visual/sprite/Jezos.png" id="14_op16g"]
+[ext_resource type="AudioStream" uid="uid://lbbbejixcavk" path="res://sounds/Adhesive1.wav" id="15_jt4s7"]
 [ext_resource type="AudioStream" uid="uid://bes5ejmjks4ne" path="res://sounds/CREDIT-SD-Ambiance_usine.ogg" id="15_mfxpw"]
+[ext_resource type="AudioStream" uid="uid://7wanigg2gbkh" path="res://sounds/Adhesive2.wav" id="16_cyvci"]
+[ext_resource type="AudioStream" uid="uid://dv0a16kirfq4o" path="res://sounds/SD-Carton_drop_inside.wav" id="17_6jfog"]
+[ext_resource type="AudioStream" uid="uid://di6cdge2fd35v" path="res://sounds/Adhesive3.wav" id="17_imeq2"]
+[ext_resource type="AudioStream" uid="uid://tolgsksujjdh" path="res://sounds/SD-Carton_slide_eloigne.wav" id="17_jt4s7"]
+[ext_resource type="AudioStream" uid="uid://b32ysqm5sgykf" path="res://sounds/Clavier.wav" id="18_6jfog"]
+[ext_resource type="AudioStream" uid="uid://difr4sptg6bsv" path="res://sounds/SD-Carton_slide_vers.wav" id="18_cyvci"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_32443"]
 
@@ -338,8 +345,8 @@ theme_override_font_sizes/bold_italics_font_size = 48
 theme_override_font_sizes/italics_font_size = 48
 theme_override_font_sizes/mono_font_size = 48
 bbcode_enabled = true
-text = "            [b]Avertissement légal[/b]
-Ce jeu est purement une oeuvre de fiction. Toute ressemblence avec des éléments ou personnes réels est purement fortuite."
+text = "[center][b]Avertissement légal[/b][/center]
+Toute ressemblance avec des faits et des personnages existants ou ayant existé serait purement fortuite et ne pourrait être que le fruit d'une pure coïncidence."
 
 [node name="MoneyLabel" type="Label" parent="MainView" unique_id=1513397655]
 offset_left = 1680.0884
@@ -433,3 +440,32 @@ script = ExtResource("3_48shk")
 [node name="BGSounds" type="AudioStreamPlayer" parent="AudioStreamPlayer" unique_id=589341172]
 stream = ExtResource("15_mfxpw")
 autoplay = true
+parameters/looping = true
+
+[node name="Adhesive1" type="AudioStreamPlayer" parent="AudioStreamPlayer" unique_id=1845013894]
+stream = ExtResource("15_jt4s7")
+volume_db = -10.0
+
+[node name="Adhesive2" type="AudioStreamPlayer" parent="AudioStreamPlayer" unique_id=1923705413]
+stream = ExtResource("16_cyvci")
+volume_db = -10.0
+
+[node name="Adhesive3" type="AudioStreamPlayer" parent="AudioStreamPlayer" unique_id=48105861]
+stream = ExtResource("17_imeq2")
+volume_db = -10.0
+
+[node name="DropItem" type="AudioStreamPlayer" parent="AudioStreamPlayer" unique_id=1768242677]
+stream = ExtResource("17_6jfog")
+volume_db = -10.0
+
+[node name="TextTypeWriter" type="AudioStreamPlayer" parent="AudioStreamPlayer" unique_id=2047891614]
+stream = ExtResource("18_6jfog")
+volume_db = 6.421
+
+[node name="DragAway" type="AudioStreamPlayer" parent="AudioStreamPlayer" unique_id=668825031]
+stream = ExtResource("17_jt4s7")
+volume_db = -5.0
+
+[node name="DragForward" type="AudioStreamPlayer" parent="AudioStreamPlayer" unique_id=1533130288]
+stream = ExtResource("18_cyvci")
+volume_db = -5.0

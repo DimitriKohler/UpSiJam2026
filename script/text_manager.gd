@@ -12,7 +12,7 @@ var dialogue := [
 	["[b]Mario Frugale[/b]", "Parfait, merci. Je vais pouvoir commencer."],
 	["[b]Beff Jezos[/b]", "Tout va bien monsieur Frugale ?"],
 	["[b]Mario Frugale[/b]", "Parfaitement merci."],
-	["[b]Beff Jezos[/b]", "Êtes-Vous êtes sûr de votre rythme là ? Vous me semblez un peu lent, il va falloir augmenter la cadence."],
+	["[b]Beff Jezos[/b]", "Êtes-vous êtes sûr de votre rythme là ? Vous me semblez un peu lent, il va falloir augmenter la cadence."],
 	["[b]Mario Frugale[/b]", "Je vais faire attention Monsieur. Merci pour votre retour…"],
 	["[b]Mario Frugale[/b]", "[i]C’est quand même redondant comme job… T’apprécies plus ça comme au premier jour. Dommage.[/i]"],
 	["[b]Beff Jezos[/b]", "Vous êtes très lent. Je ne vous paie pas à rien faire !"],
@@ -67,9 +67,11 @@ func _on_state_changed(new_state):
 	if new_state == main_script.GameState.DIALOG:
 		dialog_view.visible = true
 		background.visible = true
+		$"../../AudioStreamPlayer/TextTypeWriter".play()
 	elif new_state == main_script.GameState.TUTO:
 		dialog_view.visible = true
 		background.visible = false
+		$"../../AudioStreamPlayer/TextTypeWriter".play()
 	else:
 		dialog_view.visible = false
 
