@@ -33,7 +33,6 @@ func _ready():
 	items.append(Item.new(ItemType.USABLE, "pq"))
 	items.append(Item.new(ItemType.OTHER, "gtu"))
 	items.append(Item.new(ItemType.USABLE, "knife"))
-	items.append(Item.new(ItemType.OTHER, "gooddragon"))
 	
 
 	## Debug print

@@ -67,10 +67,8 @@ signal current_index_changed(new_index: int)
 
 func _ready():
 	await intro()
-	test_sounds()
 	money_label.visible = true
 	next()
-
 
 func _process(delta: float) -> void:
 	pass
@@ -85,6 +83,10 @@ func next(increment: int = 1):
 	
 	
 func _set_index(new_index: int) -> void:
+	if new_index >= state_list.size():
+		get_tree().change_scene_to_file("res://levels/main_menu.tscn")
+		return
+		
 	current_index = new_index
 	emit_signal("current_index_changed", new_index)
 	print("Current index changed to:", new_index)
@@ -114,7 +116,6 @@ func _input(event: InputEvent) -> void:
 			get_tree().quit()
 		
 
-
 func intro() -> void:
 	# Start hidden
 	disclaimer_panel.visible = true
@@ -125,28 +126,23 @@ func intro() -> void:
 
 	# --- Fade IN text ---
 	var tween = create_tween()
-	tween.tween_property(disclaimer_label, "modulate:a", 1.0, 0.0)
+	tween.tween_property(disclaimer_label, "modulate:a", 1.0, 2.0)
 	await tween.finished
 
 	# Small pause (optional)
-	await get_tree().create_timer(0.0).timeout
+	await get_tree().create_timer(2.0).timeout
 
 	# --- Fade OUT text ---
 	tween = create_tween()
-	tween.tween_property(disclaimer_label, "modulate:a", 0.0, 0.0)
+	tween.tween_property(disclaimer_label, "modulate:a", 0.0, 2.0)
 	await tween.finished
 
 	# --- Fade OUT background ---
 	tween = create_tween()
-	tween.tween_property(disclaimer_panel, "modulate:a", 0.0, 0.5)
+	tween.tween_property(disclaimer_panel, "modulate:a", 0.0, 1.5)
 	await tween.finished
 
 	# Hide everything at the end
 	disclaimer_panel.visible = false
 	disclaimer_label.visible = false
-	
-	
-	
-	
-func test_sounds():
 	

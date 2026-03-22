@@ -336,7 +336,8 @@ theme_override_font_sizes/bold_font_size = 48
 theme_override_font_sizes/bold_italics_font_size = 48
 theme_override_font_sizes/italics_font_size = 48
 theme_override_font_sizes/mono_font_size = 48
-text = "Avertissement légal
+bbcode_enabled = true
+text = "            [b]Avertissement légal[/b]
 Ce jeu est purement une oeuvre de fiction. Toute ressemblence avec des éléments ou personnes réels est purement fortuite."
 
 [node name="MoneyLabel" type="Label" parent="MainView" unique_id=1513397655]
